@@ -1,0 +1,37 @@
+name: "JFrog-GitHub NPM Publish OIDC Integration"
+on: push
+
+# This is required as per
+# https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-cloud-providers#adding-permissions-settings
+permissions:
+  id-token: write
+
+jobs:
+  build:
+     runs-on: ubuntu-latest
+     env:
+      JFROG_CLI_LOG_LEVEL: 'DEBUG'
+      OIDC_AUDIENCE: 'jfrog-github'
+      OIDC_PROVIDER: 'jfrog-github'
+      PLATFORM_REPO: 'jordanta-npm-virtual'
+     steps:
+       - name: Checkout
+         uses: actions/checkout@v3
+
+       - name: Setup Node npm
+         uses: actions/setup-node@v3
+
+       - name: Setup JFrog CLI
+         uses: jfrog/setup-jfrog-cli@v3
+         env:
+           JF_URL: ${{ secrets.JF_URL }}
+         with:
+           oidc-provider-name: ${{ env.OIDC_PROVIDER }}
+           oidc-audience: ${{ env.OIDC_AUDIENCE }}
+
+      - name: Push Docker image
+        run: jf docker push elinaf.jfog.io/hello-world:latest --build-name=my-build-name --build-number=7
+
+      - name: Publish docker image
+        run: jf rt bp my-build-name 7
+
