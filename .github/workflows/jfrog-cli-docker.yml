@@ -10,10 +10,8 @@ jobs:
   build:
      runs-on: ubuntu-latest
      env:
-      JFROG_CLI_LOG_LEVEL: 'DEBUG'
       OIDC_AUDIENCE: 'jfrog-github'
       OIDC_PROVIDER: 'jfrog-github'
-      PLATFORM_REPO: 'jordanta-docker-local'
      steps:
        - name: Checkout
          uses: actions/checkout@v4
@@ -24,8 +22,6 @@ jobs:
          with:
            oidc-provider-name: ${{ env.OIDC_PROVIDER }}
            oidc-audience: ${{ env.OIDC_AUDIENCE }}
-       - name: Docker Login
-         run: jf docker login -u jordanta -p Password1! elinaf.jfrog.io
        - name: Build Docker image
          run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test . 
        - name: Push Docker image
