@@ -13,7 +13,7 @@ jobs:
       JFROG_CLI_LOG_LEVEL: 'DEBUG'
       OIDC_AUDIENCE: 'jfrog-github'
       OIDC_PROVIDER: 'jfrog-github'
-      PLATFORM_REPO: 'jordanta-docker-virtual'
+      PLATFORM_REPO: 'jordanta-docker-local'
      steps:
 
        - name: Setup JFrog CLI
