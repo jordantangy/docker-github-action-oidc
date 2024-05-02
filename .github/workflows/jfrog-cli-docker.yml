@@ -27,8 +27,8 @@ jobs:
        - name: Docker Login
          run: jf docker login -u jordanta -p Password1! elinaf.jfrog.io
        - name: Build Docker image
-         run: jf docker build -t elinaf.jfog.io/jordanta-docker-local/github-test . 
+         run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test . 
        - name: Push Docker image
-         run: jf docker push elinaf.jfog.io/jordanta-docker-local/github-test
+         run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-test
 
 
