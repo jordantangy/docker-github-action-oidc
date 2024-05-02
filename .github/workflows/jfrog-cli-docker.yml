@@ -25,7 +25,7 @@ jobs:
            oidc-provider-name: ${{ env.OIDC_PROVIDER }}
            oidc-audience: ${{ env.OIDC_AUDIENCE }}
        - name: Docker Login
-         docker login -u jordanta -p Password1! elinaf.jfrog.io
+         run: jf docker login -u jordanta -p Password1! elinaf.jfrog.io
        - name: Build Docker image
          run: jf docker build -t elinaf.jfog.io/jordanta-docker-local/github-test . 
        - name: Push Docker image
