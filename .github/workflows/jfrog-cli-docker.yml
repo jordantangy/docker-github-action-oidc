@@ -16,7 +16,7 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v4
        - name: Setup JFrog CLI
-         uses: /Users/jordanta/jfrog
+         uses: '/Users/jordanta/jfrog/'
          env:
            JF_URL: ${{ secrets.JF_URL }}
          with:
