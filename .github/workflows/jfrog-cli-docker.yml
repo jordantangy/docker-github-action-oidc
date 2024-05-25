@@ -16,7 +16,7 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v4
        - name: Setup JFrog CLI
-         uses: CHP-Apps/setup-jfrog-cli@v2
+         uses: jfrog/setup-jfrog-cli@v2
          env:
            JF_URL: ${{ secrets.JF_URL }}
          with:
