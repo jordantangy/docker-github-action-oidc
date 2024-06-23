@@ -19,7 +19,7 @@ jobs:
         with:
           oidc-provider-name: '${{ env.OIDC_PROVIDER }}'
           oidc-audience: '${{ env.OIDC_AUDIENCE }}'
-      - name: "Build Docker image\L"
+      - name: Build Docker image
         run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test .
       - name: Push Docker image
         run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-test
