@@ -21,5 +21,5 @@ jobs:
       - name: "Build Docker image\L"
         run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test .
       - name: Push Docker image
-        run": jf docker push elinaf.jfrog.io/jordanta-docker-local/github-test
+        run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-test
 
