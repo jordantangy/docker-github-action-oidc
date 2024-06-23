@@ -20,6 +20,6 @@ jobs:
           oidc-provider-name: '${{ env.OIDC_PROVIDER }}'
           oidc-audience: '${{ env.OIDC_AUDIENCE }}'
       - name: Pull Docker image from Artifactory
-        run: jf docker pull elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox/latest1-linux-arm64
+        run: jf docker pull elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox:latest1-linux-arm64
       - name: Run Docker image
-        run: docker run elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox/latest1-linux-arm64
+        run: docker run elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox:latest1-linux-arm64
