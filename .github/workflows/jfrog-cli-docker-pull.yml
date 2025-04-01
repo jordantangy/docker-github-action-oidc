@@ -3,19 +3,18 @@ name: JFrog-GitHub NPM Publish OIDC Integration
 permissions:
   id-token: write
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      OIDC_AUDIENCE: jfrog-github
-      OIDC_PROVIDER: jfrog-github
-    steps:
-    steps:
-        - name: Setup JFrog CLI
-          uses: actions/checkout@v4
-    env:
+ build:
+   runs-on: ubuntu-latest
+   steps:
+   # This action checks out the code from the repository
+   - name: Setup JFrog CLI
+     uses: jfrog/setup-jfrog-cli@v4
+   - name: Checkout
+     uses: actions/checkout@v4
+     env:
           JF_URL: '${{ secrets.JF_URL }}'
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-      - name: Pull Docker image from Artifactory
-        run: jf docker pull elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox:latest1-linux-amd64
-      - name: Run Docker image
-        run: docker run elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox:latest1-linux-amd64
+   - name: Pull Docker image from Artifactory
+     run: jf docker pull elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox:latest1-linux-amd64
+   - name: Run Docker image
+     run: docker run elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox:latest1-linux-amd64

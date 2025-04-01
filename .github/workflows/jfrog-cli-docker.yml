@@ -5,13 +5,11 @@ permissions:
 jobs:
  build:
    runs-on: ubuntu-latest
-  
    steps:
    # This action checks out the code from the repository
-   - name: Checkout Code
-     uses: actions/checkout@v2
-
    - name: Setup JFrog CLI
+     uses: jfrog/setup-jfrog-cli@v4
+   - name: Checkout
      uses: actions/checkout@v4
      env:
           JF_URL: '${{ secrets.JF_URL }}'
