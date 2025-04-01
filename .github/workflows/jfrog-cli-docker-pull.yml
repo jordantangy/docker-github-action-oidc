@@ -14,8 +14,9 @@ jobs:
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v4
         env:
-          JF_URL: '${{ secrets.JF_URL }}'
-          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+            JF_URL: https://elinaf.jfrog.io 
+        with:
+            oidc-provider-name: yoavh-new 
         with:
           oidc-provider-name: '${{ env.OIDC_PROVIDER }}'
           oidc-audience: '${{ env.OIDC_AUDIENCE }}'
