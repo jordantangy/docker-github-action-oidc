@@ -17,9 +17,6 @@ jobs:
             JF_URL: https://elinaf.jfrog.io 
         with:
             oidc-provider-name: yoavh-new 
-        with:
-          oidc-provider-name: '${{ env.OIDC_PROVIDER }}'
-          oidc-audience: '${{ env.OIDC_AUDIENCE }}'
       - name: Pull Docker image from Artifactory
         run: jf docker pull elinaf.jfrog.io/jordanta-docker-virtual/multi-arch-test/busybox:latest1-linux-amd64
       - name: Run Docker image
