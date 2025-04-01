@@ -16,7 +16,8 @@ jobs:
         env:
             JF_URL: https://elinaf.jfrog.io 
         with:
-            oidc-provider-name: yoavh-github 
+            oidc-provider-name: yoavh-github
+            oidc-audience: support
       - name: Build Docker image
         run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test .
       - name: Push Docker image
