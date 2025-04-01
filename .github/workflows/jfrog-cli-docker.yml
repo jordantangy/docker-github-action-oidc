@@ -3,23 +3,21 @@ name: JFrog-GitHub NPM Publish OIDC Integration
 permissions:
   id-token: write
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      OIDC_AUDIENCE: jfrog-github
-      OIDC_PROVIDER: jfrog-github
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup JFrog CLI
-        uses: jfrog/setup-jfrog-cli@v4
-        env:
-            JF_URL: https://elinaf.jfrog.io 
-        with:
-            oidc-provider-name: yoavh-github
-            oidc-audience: support
-      - name: Build Docker image
-        run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test .
-      - name: Push Docker image
-        run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-test
+ build:
+   runs-on: ubuntu-latest
+  
+   steps:
+   # This action checks out the code from the repository
+   - name: Checkout Code
+     uses: actions/checkout@v2
+
+   - name: Setup JFrog CLI
+     uses: actions/checkout@v4
+     env:
+          JF_URL: '${{ secrets.JF_URL }}'
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+   - name: Build Docker image
+     run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test .
+   - name: Push Docker image
+     run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-test
 
