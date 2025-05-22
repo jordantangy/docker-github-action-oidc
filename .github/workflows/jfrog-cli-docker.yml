@@ -1,5 +1,5 @@
 name: JFrog-GitHub NPM Publish OIDC Integration
-on: workflow_dispatch
+on: push
 permissions:
   id-token: write
 jobs:
@@ -17,5 +17,5 @@ jobs:
    - name: Build Docker image
      run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test .
    - name: Push Docker image
-     run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-test
+     run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-push-test
 
