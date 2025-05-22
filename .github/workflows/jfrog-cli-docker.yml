@@ -15,7 +15,14 @@ jobs:
           JF_URL: '${{ secrets.JF_URL }}'
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
    - name: Build Docker image
-     run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test .
+     run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test/nginx .
+   - name: Get image ID
+     run: |
+          IMAGE_ID=$(docker images elinaf.jfrog.io/jordanta-docker-local/github-test/nginx --format "{{.ID}}" | head -n1)
+          echo "Image ID: $IMAGE_ID"
+          echo "image_id=$IMAGE_ID" >> $GITHUB_OUTPUT
+   - name: Tag Image
+     run: jf docker tag $IMAGE_ID elinaf.jfrog.io/jordanta-docker-push-test/nginx:latest
    - name: Push Docker image
-     run: jf docker push elinaf.jfrog.io/jordanta-docker-local/github-push-test
+     run: jf docker push elinaf.jfrog.io/jordanta-docker-push-test/nginx:latest
 
