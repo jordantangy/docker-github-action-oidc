@@ -17,6 +17,7 @@ jobs:
    - name: Build Docker image
      run: jf docker build -t elinaf.jfrog.io/jordanta-docker-local/github-test/nginx .
    - name: Get image ID
+     id: get_image_id
      run: |
           IMAGE_ID=$(docker images elinaf.jfrog.io/jordanta-docker-local/github-test/nginx --format "{{.ID}}" | head -n1)
           echo "Image ID: $IMAGE_ID"
