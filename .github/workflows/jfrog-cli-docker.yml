@@ -22,7 +22,7 @@ jobs:
           echo "Image ID: $IMAGE_ID"
           echo "image_id=$IMAGE_ID" >> $GITHUB_OUTPUT
    - name: Tag Image
-     run:  docker tag $IMAGE_ID elinaf.jfrog.io/jordanta-docker-push-test/nginx
+     run:  docker tag ${{ steps.get_image_id.outputs.image_id }} elinaf.jfrog.io/jordanta-docker-push-test/nginx
    - name: Push Docker image
      run: jf docker push elinaf.jfrog.io/jordanta-docker-push-test/nginx
 
